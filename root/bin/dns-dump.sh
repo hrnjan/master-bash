@@ -6,7 +6,7 @@ display_help() {
     echo "  Usage: $0 [-h] [-u user] [-d days]" >&2
     echo
     echo "   -u, --user         MANDATORY: Username (owner)"
-    echo "   -d, --days           Delete older DNS dumps than -d days (default: 3)"
+    echo "   -d, --days           Delete older DNS dumps than x days (default: 3)"
     echo "   -h, --help           Show this help"
     echo
     exit 1
