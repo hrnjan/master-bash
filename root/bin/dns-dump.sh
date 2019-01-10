@@ -73,6 +73,16 @@ cd $path$day
 for i in $domains; do
 echo "dig +nocmd $i any +multiline +noall +answer"
 dig +nocmd $i any +multiline +noall +answer > $i
+if grep TXT $i; then
+echo "$i contains TXT record"
+else
+dig +nocmd $i TXT +multiline +noall +answer &>> $i
+fi
+if grep DKIM $i; then
+echo "$i contains DKIM record"
+else
+dig +nocmd dkim._domainkey.$i TXT +multiline +noall +answer &>> $i
+fi
 done
 
 chown $user:$user -R $path
